@@ -22,11 +22,11 @@ Soit `a=c("lannister", "targaryen", "baratheon", "starck", "greyjoy")`
 
 1. Quelle est la longueur du vecteur ? *indice : `length`*
 2. Essayez de faire `a[1:3]`. Qu'obtenez-vous ?
-3. Créez un nouveau vecteur `b`ne contenant que lannister et starck.
+3. Créez un nouveau vecteur `b` ne contenant que lannister et starck.
 4. Essayez de faire a[-1]. Qu'obtenez-vous ?
 5. Triez par ordre alphabetique. *indice : `sort`* ?
 
-```{r exercice1, echo = FALSE, eval = FALSE }
+```{r exercice1, echo = TRUE, eval = FALSE }
 a=c("lannister", "targaryen", "baratheon", "starck", "greyjoy")
 length(a)
 a[1:3]
@@ -37,14 +37,14 @@ sort(a)
 
 ## Exercice 2 
 
-1. Créez un vecteur `a` contenant tous les entiers de 1 à 100. *Indice: `:`.*
+1. Créez un vecteur `a` contenant tous les entiers de 1 à 100. *Indice: `":"`.*
 2. Ajoutez les valeurs 200, 201, 202 au vecteur `a`.
 3. Créez un vecteur `b` contenant tous les entiers pairs de 2 à 100. *Indice: `seq`.*
 
 
 *Indice: `seq`.*
 
-```{r exercice2, echo = FALSE, eval = FALSE}
+```{r exercice2, echo = TRUE, eval = FALSE}
 a = c(1:100)
 c(a, 200, 201, 202)
 b = seq(from = 2, to = 100, by = 2)
@@ -59,7 +59,7 @@ b = seq(from = 2, to = 100, by = 2)
 
 Pensez à bien regarder l'aide des fonctions. Par exemple, pour la fonction `rep` regardez bien la différence entre les paramètres `each` et `times` ; vous pouvez copier-coller les lignes d'exemple pour bien comprendre chaque paramètre.
 
-```{r exercice3, echo = FALSE, eval = FALSE}
+```{r exercice3, echo = TRUE, eval = FALSE}
 #1
 vec1 = seq(from=2, to=50, by=2 )
 
@@ -78,7 +78,7 @@ Essayez `paste("chr", 1, sep="")`.
 Créez, en une seule ligne de commande, le vecteur `vec4` contenant les noms suivants : `chr1 `, `chr2 `, ... , `chr22`, `chrX`, `chrY`.
 *Indice : `paste()`*
 
-```{r exercice4, echo = FALSE, eval = FALSE}
+```{r exercice4, echo = TRUE, eval = FALSE}
 paste("chr", 1, sep="")
 vec4 = paste("chr", c(1:22,"X","Y"), sep="")
 
@@ -92,7 +92,7 @@ vec4 = paste("chr", c(1:22,"X","Y"), sep="")
 3. Que permet de faire la fonction `table` ? Appliquez la à `fac`. __Retenez bien la fonction `table` très très utile !__
  
 
-```{r exercice5, echo = FALSE, eval = FALSE}
+```{r exercice5, echo = TRUE, eval = FALSE}
 fac = factor(c("a","b","b","b","a","b","a","a"))
 length(which(fac == "a"))
 length(which(fac == "b"))
@@ -108,7 +108,7 @@ table(fac)
 4. Utilisez la fonction `t` sur cette matrice pour créer une matrice `B`. Que s'est-il passé ?
 5. Les commandes `A[1:5, ]` et `B[, 1:5]` permettent de récuperer respectivement les 5 premières lignes de `A` et les 5 premières colonnes de `B`. Inspirez-vous de ces commandes pour récupérez dans `A` les lignes ne contenant que des 1 et dans `B` les colonnes ne contenant que des 0.
 
-```{r exercice6, echo = FALSE, eval = FALSE}
+```{r exercice6, echo = TRUE, eval = FALSE}
 #1
 a = rep(c(0,1), 50)
 
@@ -140,7 +140,7 @@ On peut accéder aux deux éléments de cette liste avec les commandes `x[[i]]` 
 4. Rajoutez à la liste `x` un vecteur `chiffre` contenant les entiers de 1 à 26.
 5. Essayez de transformer de nouveau `x` en `data.frame`. Que se passe-t-il ?
 
-````{r exercice7, echo = FALSE, eval = FALSE}
+````{r exercice7, echo = TRUE, eval = FALSE}
 #1
 x = list(
   a = rnorm(10),
@@ -176,7 +176,7 @@ as.data.frame(x)
 6. Quelles sont les noms des colonnes de la matrice `sleep2` ? Renommez la dernière colonne en 'sex'. *Indice : `colnames()`*
 7. Combien y-a-t-il de femmes et d'hommes dans chacun des groupes ?
 
-```{r exerciceFinalClasseObjet, echo = FALSE, eval = FALSE}
+```{r exerciceFinalClasseObjet, echo = TRUE, eval = FALSE}
 #1 
 data(sleep)
 #2
@@ -215,7 +215,7 @@ suivantes: `read.table()`, `read.csv()`, `read.csv2()` et `scan()`. Par ailleurs
 *Indice : `help("read.table")`, `help("is.na")`*
 
 
-```{r exercice8, echo = FALSE, eval = FALSE}
+```{r exercice8, echo = TRUE, eval = FALSE}
 #1
 A = read.table(file="auto2004_original.txt", sep="\t", header = TRUE)
 
@@ -255,7 +255,7 @@ Créer la matrice suivante :
 4. Que donne la commande `C = load("matriceA.Rdata")` ?
 5. Sauver toutes les variables dans un fichier nommé "données.Rdata"
   
-```{r exercice9, echo = FALSE, eval =FALSE}
+```{r exercice9, echo = TRUE, eval =FALSE}
 
 A = matrix(seq(12), ncol = 4, byrow = TRUE)
 
@@ -302,7 +302,7 @@ Quel résultat obtenez-vous ?
     
 
 
-```{r exercice10, echo = FALSE, eval=FALSE}
+```{r exercice10, echo = TRUE, eval=FALSE}
 #1
 data(iris)
 
@@ -360,7 +360,7 @@ dev.off()
 4. Regarder l'aide de la fonction `density()`. Appliquer cette fonction à la variable `Ozone`. Cela retourne-t-il une erreur ? Pourquoi ? Corriger la en spécifiant une option.
 5. Ajouter la courbe de densité précédemment générer à l'histogramme. *Indice `lines()`*
 
-```{r exercice11,echo = FALSE, eval=FALSE}
+```{r exercice11,echo = TRUE, eval=FALSE}
 data(airquality)
 hist(airquality$Ozone)
 hist(airquality$Ozone, freq=FALSE, main="Histogramme Ozone", xlab="Ozone", ylab="Densité", col = "gray", border = "blue")
@@ -384,7 +384,7 @@ lines(d)
 2. Créer une boucle qui affiche l'indice `i ` de l'itération en cours (10 itérations)
 3. A l'aide d'une boucle, calculez la somme des entiers pairs compris entre 1 et 100.
 
-```{r exercice&2, echo = FALSE, eval = FALSE }
+```{r exercice&2, echo = TRUE, eval = FALSE }
 #1
 help("for")
 
@@ -407,7 +407,7 @@ somme
 2. Utilisez les structures `if` et `else` pour créer un programme qui prend en entrée un réel $x$ et qui lui associe $y=x^2$ si $x$ est strictement positif et $y=x^3$ si $x$ est négatif ou nul. Testez pour les valeurs $x$ = 25, -2, 12 et 0.
 3. Utilisez les structures `if` et `else` pour créer un programme qui imprime à l'écran, pour chaque entier relatif $i$ compris entre -10 et 10, $i^3$ si $i<=0$, ou $i^2$ si $i>0$. 
 
-```{r exercice13, echo = FALSE, eval = FALSE }
+```{r exercice13, echo = TRUE, eval = FALSE }
 #1
 help("if")
 
@@ -445,7 +445,7 @@ for (i in -10:10){
 4. Afficher la moyenne des lignes et des colonnes de la matrice. 
 5. Un autre moyen d'afficher rapidemment la somme/moyenne des lignes/colonnes d'une matrice, est d'utiliser des fonctions R pré-existantes : `rowSums`, `colSums`, `rowMeans`, `colMeans`.
 
-```{r exercice15, echo = FALSE, eval=FALSE}
+```{r exercice15, echo = TRUE, eval=FALSE}
 #1
 matrice = matrix(rnorm(n=100, mean = 0, sd = 2.32),nrow = 10, ncol=10)
 
@@ -476,7 +476,7 @@ rowMeans(matrice); colMeans(matrice)
 1. Exécutez les commandes `data(iris)` puis `str(iris)`. Nous venons de charger en mémoire l'un des nombreux jeux de données distribués avec R ! Profitez de l'aide sur ce jeu de données pour en apprendre un peu plus sur les fleurs (`?iris`) ! Tous les jeux de données disponibles avec l'installation de base de R sont accessibles en tapant `data()`.
 
 2. Créez la fonction `moyenneET` suivante et décryptez la :
-```{r, echo = FALSE}
+```{r, echo = TRUE}
 moyenneET = function(i) c(moy = mean(iris[,i]), et = sd(iris[,i]) )
 ```
 
@@ -484,7 +484,7 @@ moyenneET = function(i) c(moy = mean(iris[,i]), et = sd(iris[,i]) )
 
 *Remarque :* pour exécuter plusieurs commandes au sein d'une même fonction, il faut utiliser des accolades `{...}`.
 
-```{r exercice16, echo = FALSE, eval = FALSE}
+```{r exercice16, echo = TRUE, eval = FALSE}
 #1
 data(iris)
 str(iris)
@@ -512,7 +512,7 @@ moyenneET(4)
 
 Créer une fonction nommée `somme ` qui calcule la somme de deux variables `x ` et `y ` passées en arguments.
 
-```{r exercice17, echo = FALSE, eval=FALSE}
+```{r exercice17, echo = TRUE, eval=FALSE}
 somme = function(x, y){
   resultat = x+y
   return(resultat)
@@ -527,7 +527,7 @@ somme = function(x, y){
 
 *Indice : `sample`, `while`*
 
-```{r exercice18, echo = FALSE, eval = FALSE}
+```{r exercice18, echo = TRUE, eval = FALSE}
 # 1
 nombre_mystere = 59
 
@@ -576,7 +576,7 @@ nom.prenom@etudiant.centralsupelec.fr.
 
 *indice : `strsplit`*
 
-```{r exercice19mail, echo = FALSE, eval = FALSE}
+```{r exercice19mail, echo = TRUE, eval = FALSE}
   emails = c( "john.snow@etudiant.centralsupelec.fr",
               "patti.smith@etudiant.centralsupelec.fr",
               "rick.grimes@etudiant.centralsupelec.fr",
@@ -584,7 +584,7 @@ nom.prenom@etudiant.centralsupelec.fr.
 ```
 
 
-```{r exercice19, echo = FALSE, eval=FALSE}
+```{r exercice19, echo = TRUE, eval=FALSE}
 #1
 parseMail = function(email){
   nom_prenom = unlist(strsplit(email, "@"))[1]
@@ -629,7 +629,7 @@ Elle contient des informations fictives sur des utilisateurs de Twitter ; chaque
 
 5. Quelle est la structure de l'objet `res` obtenu à la question précédente ?
 
-```{r exercice20, echo = FALSE, eval = FALSE}
+```{r exercice20, echo = TRUE, eval = FALSE}
 #1
 load("twittos.rda")
 
@@ -661,7 +661,7 @@ Les données `old faithful geyser ` ont été collectées dans le cadre d'une é
 
 5.1 Créer la matrice suivante :
 
-```{r, echo = FALSE, eval = TRUE}
+```{r, echo = TRUE, eval = TRUE}
 layMat = matrix(c(2,0,1,3), ncol=2, byrow=TRUE)
 layMat
 ```
@@ -687,7 +687,7 @@ Cette matrice permettra à la fonction `layout` d'afficher les prochains plot :
 - l'histogramme de la variable "eruption"
 - l'histogramme de la variable "waiting" (*indice : pensez à mettre l'hitogramme à l'horizontal*)
 
-```{r exercice21, echo = FALSE, eval=FALSE}
+```{r exercice21, echo = TRUE, eval=FALSE}
 #1 
 data(faithful)
 ?faithful
@@ -729,7 +729,7 @@ Un ami vous propose le jeu suivant. On lance un dé. Si le résultat est 5 ou 6,
 
 Conclusion ?
 
-```{r exercice22, echo = FALSE, eval=FALSE}
+```{r exercice22, echo = TRUE, eval=FALSE}
 
 #1
 simul = function(i){
@@ -774,7 +774,7 @@ Nous avons chargé 2 objets :
 3. On veut à présent représenter le nombres de visites par des couches de couleurs différentes plutôt que par des symboles proportionnels. Quelle fonction doit-on utiliser ? Appliquer la fonction aux données. Le résultat obtenu vous parait-il correct ? 
 4. Regarder le contenu de l'objet `WorldCountries@data`. Construisez un nouveau dataframe contenant tous les pays et les nombres de visites (NA ou 0 si inconnu). Réessayez de créer le graphique de la question précédente. *Indice : pour créer le nouveau dataframe, la fonction `merge` peut vous être utile*
 
-```{r exercice23, echo = FALSE, eval=FALSE}
+```{r exercice23, echo = TRUE, eval=FALSE}
 library(cartography)
 load((url("http://wukan.ums-riate.fr/bond/bondfiles.RData")))
 head(BondVisits)
@@ -829,7 +829,7 @@ Cet exercice a pour objectif de reconstruire ce profil à partir du package "chr
 
 *Indice : les lignes vertes correspondent à la moyenne des valeurs absolues des différences mesurées entre deux sondes*
 
-```{r exercice24, echo = FALSE, eval = FALSE}
+```{r exercice24, echo = TRUE, eval = FALSE}
 #1
 install.packages("chromosomes_1.0-0.tar.gz", repos = NULL, type = "source")
 library("chromosomes")
