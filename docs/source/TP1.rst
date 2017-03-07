@@ -6,7 +6,7 @@ Cette session a pour but de vous faire découvrir le langage R, ainsi que les ou
 
 * Présentation du TP1 :download:`slides <TP1/Session1_slides.pptx>`
 * Exercices :download:`exercices <TP1/TP1_exercices.pdf>`
-* Correction des exercices :download:`correction <TODOTP1/TP1_exercices_correction.pdf>`
+* Correction des exercices :download:`correction <TP1/TP1_exercices_correction.pdf>`
 * Données à télécharger pour le TP1 : :download:`data.zip <TP1/data.zip>`
 
 
