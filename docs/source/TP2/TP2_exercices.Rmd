@@ -1,9 +1,14 @@
 ---
-title: "TP2"
+title: "TP02 - Découverte de R - Exercices"
 author: "Justine Guégan - ICONICS"
-date: "7 mars 2017"
+date: "9 mars 2017"
 output: pdf_document
 ---
+
+Ce polycopié rassemble différents exercices vous permettant d’apprendre à utiliser le langage de programmation
+R, en particulier, la lecture/écriture de fichiers, les graphiques, l'interprétation d'un code R existant. De manière générale, pensez à lire toutes les sous-questions car elles permettent de vous guider.
+
+La notation entre `<>` n'est pas une notation R, c'est juste pour vous indiquer de personnaliser ce qu'il y a entre `<>`. Par exmeple, `brewer.pal(4, "<NomPaletteDeVotreChoix>"")` pourrait correspondre à `brewer.pal(4, "Greys")`.
 
 ## Exercice 1 : KEGG pathways
 
@@ -21,7 +26,7 @@ biocLite("pathview")
 
 *NB : Ne mettez pas à jour les packages si on vous le propose car cela peut être long*
 
-2. Exécuter le code R `pathview.R` et regarder le résultat.
+2. Exécuter le code R `pathview.R` ligne à ligne et regarder le résultat.
 3. Adapter ce code pour qu'il fonctionne sur le fichier d'entrée `myGenes.csv`, sur le pathway `hsa04012`. Pensez à : 
    
     * Lire __correctement__ le fichier `myGenes.csv`. Ajoutez l'argument `stringsAsFactor = FALSE` dans `read.table()`.
@@ -54,21 +59,18 @@ p2 + geom_line(data = df1, aes(x = a, y = b)) + annotate("text", x = 1.5, y = 4.
   geom_line(data = df2, aes(x = a, y = b)) + annotate("text", x = 2.5, y = 4.05, label = "*", size = 8) 
 ```
 
-Coup de chance ! vous trouvez avec le code R qui permet de générer cette figure ! `iris.R`
+Coup de chance ! vous trouvez aussi le code R qui permet de générer cette figure ! `iris.R`
 
 1. Essayez de comprendre ce que fait le code du script `iris.R`, notamment les lignes suivantes (n'y passez pas trop de temps non plus, on voit tout en détail par la suite) : 
 
-```
-library(ggplot2)
-```
-```
-res1 = t.test(iris$Sepal.Width[which(iris$Species == "setosa")], iris$Sepal.Width[which(iris$Species == "versicolor")])
-```
-```
-pdf("sepalWidth.pdf")
-print(p3)
-dev.off()
-```
+
+> * `library(ggplot2)`
+> * `res1 = t.test(iris$Sepal.Width[which(iris$Species == "setosa")],`   
+>                  `iris$Sepal.Width[which(iris$Species == "versicolor")])`
+> * `pdf("sepalWidth.pdf")`   
+>    `print(p3)`   
+>    `dev.off()`   
+
 
 2. Placez-vous à l'endroit où vous avez enregistré le script `iris.R` : Session --> Set working directory --> Choose  directory. 
 
@@ -80,7 +82,7 @@ source(iris.R)
 
 Que s'est-il passé ? 
 
-3. Vous trouvez la figure finale générée très intéressante et vous vous dites que vous pourriez vous en inspirer pour représenter vos données d'expression de gènes. Justement, vous avez screené votre gène fétiche appelé g1 chez 100 individus classés en 3 groupes : contrôles, pré-symptomatiques et symptomatiques. De plus, le t-test réalisé pourrait apporter une valeur statistique à vote étude. 
+3. Vous trouvez la figure finale générée très intéressante et vous vous dites que vous pourriez vous en inspirer pour représenter vos données d'expression de gènes. Justement, vous avez screené votre géne fétiche appelé *g1* chez 100 individus classés en 3 groupes : contrôles, pré-symptomatiques et symptomatiques. De plus, le t-test réalisé pourrait apporter une valeur statistique à vote étude. 
 
 L'idée est donc de produire la figure suivante, en indiquant la pvalue issue du t-test entre les contrôles et les pré-symptomatiques.
 
@@ -112,19 +114,21 @@ label = paste("pvalue = ", round(res1$p.value,2), sep=""), size = 2)
 
 \newpage
 
-## Exercice 3 : Manipulation de tableaux, lecture et écriture
+## Exercice 3 : Résumer et visualiser une liste de variants
 
 > __Cet exercice a pour but de vous faire:__
 
-> * __lire/écrire des fichiers excel__
+> * __lire/écrire des fichiers (excel)__
 > * __filtrer des tableaux__
 > * __faire des représentations graphiques de base__
 
-Le fichier `VariantsTable.xlsx` est un tableau contenant une liste de vraiations génomiques (snps/indels) issues d'une capture de gène faite par séquençage à haut débit, et ce, pour 4 patients : Sample1, Sample2, Sample3 et Sample4. Cette liste de variants est annotées avec différents base de données représentant les différentes colonne du fichier.
+Le fichier `VariantsTable.xlsx` est un tableau contenant une liste de vraiations génomiques (snps/indels) issues d'une capture de gènes faite par séquençage à haut débit, et ce, pour 4 patients : Sample1, Sample2, Sample3 et Sample4. Cette liste de variants est annotée avec différentes base de données représentant les différentes colonnes du fichier.
 
-1. Chargez le package `gdata`
-2. Lire le fichier VariantsTable.xlsx (ceci peut ête long)
-3. Combien y-at-il de variants par échantillon ? Faites une représentation en bâtons (`barplot`) du nombre de variants par échantillon. Précisez un titre et colorer les barres en rouge et leur trait en rouge. 
+**1.** Chargez le package `gdata`
+
+**2.** Lire le fichier `VariantsTable.xlsx` (ceci peut être long)
+
+**3.** Combien y-at-il de variants par échantillon ? Faites une représentation en bâtons (`barplot()`) du nombre de variants par échantillon. Précisez un titre et colorez les barres en rouge et leur trait en bleu.
 
 ```{r exo3, echo=FALSE, eval=FALSE}
 library(gdata)
@@ -135,7 +139,7 @@ table(data$SampleID)
 barplot(table(data$SampleID), main="Nombre de variants par échantillon", col="red",border = "blue")
 ``` 
 
-4. Représenter en barplot le nombre de variants par chromosome, par échantillon, de telle sorte que le graphique généré ressemble à celui ci-dessous :  
+**4.** On souhaite à présent représenter en barplot le nombre de variants par chromosome, par échantillon, de telle sorte que le graphique généré ressemble à celui ci-dessous :  
 
 ```{r exo3Q4,echo=FALSE}
 library(RColorBrewer)
@@ -144,14 +148,75 @@ tabChrSample = with(data, table(SampleID, Chrom))
 barplot(tabChrSample, beside=TRUE, col=brewer.pal(4,"Paired"),legend.text = TRUE,cex.names = 0.8,las=2)
 ```
 
-   4.1 Pour cela, vous pouvez combiner la fonction `with()` avec la fonction `table()`. Regarder l'aide de la fonction `table`, et inspirez-vous des lignes d'exemple. L'idée est d'obtenir un tableau de ce type
+   **4.1** Pour cela, vous pouvez combiner la fonction `with()` avec la fonction `table()`. Regardez l'aide de la fonction `table`, et inspirez-vous des lignes d'exemple. L'idée est d'obtenir un tableau de ce type :
 
 \newpage
 
 ```{r, echo=FALSE}
-print(tabChrSample)
+print(tabChrSample[,1:6])
+```
+   **4.2** Puis créer le graphique toujours à l'aide de la fonction `barplot`. Regarder l'aide de cette fonction, notament les arguments, afin : 
+   
+> * de mettre les barres les unes à côté des autres,
+> * d'ajouter une légende
+    
+  **4.3** Les noms de tous les chromosomes ne sont pas présents ? C'est normal car la police est trop grande : diminuer la taille de la police avec l'argument `cex.names`. Si vous voulez tourner de 90° le noms des labels en x, utilisez l'argument `las=2`.
+  
+  **4.4** Vous voulez de la couleur plutôt que des nuances de gris ? Le package `RColorBrewer` est un package qui contient des palettes de couleurs. Pour l'utiliser, chargez le package, puis tapez `display.brewer.all()`. Ainsi vous visualisez toutes les palettes de couleur du package. Choisissez le nom de l'une d'entre elles et, dans les arguments de `barplot`, ajoutez :   
+  `col=brewer.pal(<nombreDeCouleursQueVousVoulez>,"<NomDeLaPalette>")`.
+
+  **5.** On veut à présent travailler sur l'impact fonctionnel des variants.
+  
+  **5.1** A partir de la colonne `ExonicFunc.refGene`, comptabilisez le nombre de variants par catégorie __pour l'échantillon Sample1__. *Indice : which() ; ==*
+  
+  **5.2** A partir du résultat de la question précédente, représentez cette fois ces données sous forme de camembert, encore appelé pie chart (`pie()`). Le rendu de base de cette fonction n'est pas trés joli ... Essayons de l'améliorer
+  
+  **5.3**
+
+> * triez le résultat de la question 5.1 (`sort()`)
+> * dans les arguments de `pie`, supprimez les bords du camembert, changez les couleurs, toujours à l'aide du package RColorBrewer,
+> * les tranches de certaines catégories sont si fines, que l'on a du mal à distinguer les noms. Il vaudrait peut-être mieux afficher une légende à côté de la figure. Pour cela, supprimer les labels dans la fonction `pie`, puis ajoutez une légende avec la commande suivante : 
+
+```
+legend(0.9,0.9, legend=names(<NomObjet>), fill =brewer.pal(7, "<VotreCouleur>"), cex=0.8)
 ```
 
+> * le camembert parait trop petit comparé à la légende ? Nous pouvons diminuer les marges de la figure avec la commande suivante : `par(mar=c(1,1,1,1))`. Pour résumer, dans l'odre, diminuer les marges de la figure, plotter le pie chart, plotter la légende.
+
+
+```{r exo4Q5, echo=FALSE,eval=FALSE}
+datared = data[which(data$SampleID == "Sample1"),]
+exonic = table(datared$ExonicFunc.refGene)
+pie(exonic)
+exonicsort = sort(exonic)
+par(mar=c(1,1,1,1))
+pie(exonicsort, border=FALSE, col=brewer.pal(7, "Set1"), labels=NA)
+legend(0.9,0.9, legend=names(exonicsort), fill =brewer.pal(7, "Set1"), cex=0.8)
+```
+
+  **6** On souhaite créer un tableau contenant uniquement des variants d'intérêt : 
+
+  **6.1** Créer un vecteur `vec1` contenant uniquement les indices des variants des catégories suivantes pour les 4 échantillons : nonsynonymous SNV, stoploss, stopgain. *Indice `which()`*
+  
+  **6.2** Créer un vecteur `vec2` contenant uniquement les indices des variants dont le score CADD (`CADD_phred`) est supérieur à 12.37. *Indice `which()`*
+  
+  **6.3** Créer un vecteur `vec3` contenant les indices communs entre la question 6.1 et 6.2 *Indice `intersect()`*
+  
+  **6.4** Créer un nouveau tableau `tab` contenant uniquement les variants nonsynonymous SNV, stoploss, stopgain, dont le CADD_phred score est > 12.37. Vous pouvez visualiser ce tableau dans RStudio avec `View(tab)`.
+  
+  **6.5** Ecrire ce nouveau tableau sur votre ordinateur grâce à la fonction `write.table`.
+  
+```{r exo3Q6, echo=FALSE}
+vec1 = which(data$ExonicFunc.refGene == "nonsynonymous SNV" | data$ExonicFunc.refGene == "stopgain" | data$ExonicFunc.refGene == "stoploss")
+vec2 = which(data$CADD_phred > 12.37)
+vec3 = intersect(vec1, vec2)
+tab = data[vec3,]
+#write.table(tab, file="exo3/outputTable.txt", sep="t", quote=FALSE, row.names=FALSE)
+```
+
+
+
+\newpage 
 
 
 ## Exercice 4 : Intersecter des intervalles génomiques
