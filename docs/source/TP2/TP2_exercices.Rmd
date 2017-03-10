@@ -32,6 +32,16 @@ biocLite("pathview")
     * Lire __correctement__ le fichier `myGenes.csv`. Ajoutez l'argument `stringsAsFactor = FALSE` dans `read.table()`.
     * Imprimer le tableau lu, vérifier sa classe ... 
 
+```{r exo1, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
+library(pathview)
+genes = read.table("exo1/myGenes.csv", sep=";", header=TRUE, stringsAsFactors = FALSE)
+rownames(genes) = genes[,2]
+pathwayID = "hsa04012"
+geneIDTYPE = "SYMBOL"
+pathview(genes[,2], pathway.id = pathwayID, gene.idtype = geneIDTYPE,plot.col.key= FALSE)
+```
+
+
 \newpage
 
 ## Exercice 2 : From iris data to expression data
@@ -45,7 +55,7 @@ biocLite("pathview")
 
 Vous avez trouvé sur internet une figure que vous trouvez très intéressante et que vous aimeriez reproduire pour vos propres données. 
 
-```{r echo=FALSE}
+```{r echo=FALSE, warning=FALSE, message=FALSE}
 data(iris)
 library(ggplot2)
 p2 = ggplot(iris, aes(x=Species, y=Sepal.Width)) +
@@ -86,7 +96,7 @@ Que s'est-il passé ?
 
 L'idée est donc de produire la figure suivante, en indiquant la pvalue issue du t-test entre les contrôles et les pré-symptomatiques.
 
-```{r echo = FALSE}
+```{r echo = TRUE, message=FALSE}
 library(ggplot2)
 data = read.table("exo2/gene1.txt", sep="\t", header=TRUE)
 p2 = ggplot(data, aes(x=group, y=g1)) +
@@ -130,7 +140,7 @@ Le fichier `VariantsTable.xlsx` est un tableau contenant une liste de vraiations
 
 **3.** Combien y-at-il de variants par échantillon ? Faites une représentation en bâtons (`barplot()`) du nombre de variants par échantillon. Précisez un titre et colorez les barres en rouge et leur trait en bleu.
 
-```{r exo3, echo=FALSE, eval=FALSE}
+```{r exo3, echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
 library(gdata)
 data = read.xls("exo3/VariantsTable.xlsx")
 dim(data)
@@ -141,7 +151,7 @@ barplot(table(data$SampleID), main="Nombre de variants par échantillon", col="r
 
 **4.** On souhaite à présent représenter en barplot le nombre de variants par chromosome, par échantillon, de telle sorte que le graphique généré ressemble à celui ci-dessous :  
 
-```{r exo3Q4,echo=FALSE}
+```{r exo3Q4,echo=TRUE, warning=FALSE, message=FALSE}
 library(RColorBrewer)
 data = read.table("exo3/VariantsTable.csv", sep="\t", header=TRUE)
 tabChrSample = with(data, table(SampleID, Chrom))
@@ -184,7 +194,7 @@ legend(0.9,0.9, legend=names(<NomObjet>), fill =brewer.pal(7, "<VotreCouleur>"),
 > * le camembert parait trop petit comparé à la légende ? Nous pouvons diminuer les marges de la figure avec la commande suivante : `par(mar=c(1,1,1,1))`. Pour résumer, dans l'odre, diminuer les marges de la figure, plotter le pie chart, plotter la légende.
 
 
-```{r exo4Q5, echo=FALSE,eval=FALSE}
+```{r exo4Q5, echo=TRUE,eval=TRUE, message=FALSE}
 datared = data[which(data$SampleID == "Sample1"),]
 exonic = table(datared$ExonicFunc.refGene)
 pie(exonic)
@@ -206,12 +216,12 @@ legend(0.9,0.9, legend=names(exonicsort), fill =brewer.pal(7, "Set1"), cex=0.8)
   
   **6.5** Ecrire ce nouveau tableau sur votre ordinateur grâce à la fonction `write.table`.
   
-```{r exo3Q6, echo=FALSE}
+```{r exo3Q6, echo=TRUE, eval=FALSE, message=FALSE}
 vec1 = which(data$ExonicFunc.refGene == "nonsynonymous SNV" | data$ExonicFunc.refGene == "stopgain" | data$ExonicFunc.refGene == "stoploss")
 vec2 = which(data$CADD_phred > 12.37)
 vec3 = intersect(vec1, vec2)
 tab = data[vec3,]
-#write.table(tab, file="exo3/outputTable.txt", sep="t", quote=FALSE, row.names=FALSE)
+write.table(tab, file="exo3/outputTable.txt", sep="t", quote=FALSE, row.names=FALSE)
 ```
 
 
@@ -244,7 +254,7 @@ Dans cet exercice, on cherche à intersecter 2 fichiers contenant des positions 
     
     3.2 En vous aidant du script `findOverlaps.R` et de l'aide du package GenomicRanges, créer 2 tableaux tab1 et tab2 contenant uniquement les snp dont la pvalue (*ie.* score) est inférieure à 0.01 et 0.005 respectivement ET qui overlappent un transcrit.
     
-```{r exo4, echo=FALSE, eval=FALSE, warning=FALSE}
+```{r exo4, echo=TRUE, eval=FALSE, warning=FALSE, message=FALSE}
 library("GenomicRanges")
 library(plyr)
 data = read.table("exo3/transcriptsTable.txt", sep="\t", header=FALSE)

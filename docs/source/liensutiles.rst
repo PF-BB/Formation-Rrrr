@@ -12,7 +12,7 @@ Voici également des liens vers une sélection (par l'équipe pédagogique) de r
 
 * `Le site d'Aymeric Duclert <http://www.duclert.org/>`_ qui propose un très bon aide-mémoire
 * `Quick-R <http://www.statmethods.net/>`_
-
+* `R pour les statophobes de Denis Poinsot <https://perso.univ-rennes1.fr/denis.poinsot/Statistiques_%20pour_statophobes/R%20pour%20les%20statophobes.pdf>`_ : Utilisation du logiciel statistique R pour réaliser les analyses statistiques  de  base,  à  l’attention  des  étudiants  allergiques aux statistiques en général et aux logiciels en particulier.
 
 .. image:: images/RStudio.png
         :width: 120px
