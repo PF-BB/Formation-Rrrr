@@ -9,7 +9,7 @@ Date		 	Salles        	Description
 ================= 	=============	======================================================================
 Jour 1 (6 mars)  	Salle 4 RDC	Commandes de base en R, Charger et sauvegarder des données, graphiques
 Jour 2 (9 mars)  	Salle 4.001	Approfondissement des notions de base, des graphiques. Statistiques simples
-Jour 3 (17 mars) 	Salle 4 RDC	A définir
+Jour 3 (17 mars) 	Salle 4 RDC	Lecture fichier, filtres tableaux, cartes de chaleur
 ================= 	=============	======================================================================
 
 Table des matières
