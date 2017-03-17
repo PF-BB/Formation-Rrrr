@@ -9,4 +9,6 @@ Cette session a pour but de vous faire installer des packages, lire/écrire des 
 * Correction des exercices :download:`correction <TP3/TP3_exercices_correction.pdf>`
 * Données à télécharger pour le TP3 : :download:`data.zip <TP3/TP3_data.zip>`
 
+* Enquête de satisfaction :`questionnaire <https://goo.gl/forms/da5cDyzZEMr9lKJv1>`_
+
 
